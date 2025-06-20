@@ -1,0 +1,27 @@
+# ===== .NET =====
+**/bin/
+backend\Talabat_APIs\bin
+backend\Talabat_APIs\obj
+**/obj/
+.vs/
+**/appsettings.Development.json
+*.user
+*.suo
+*.db
+*.pfx
+*.sln.docstates
+
+# ===== Node / Angular =====
+frontend/node_modules/
+frontend/dest/
+frontend/dist/
+frontend/.angular/cache/
+frontend/.angular/
+frontend/node_modules/.cache
+
+# ===== Global =====
+*.env
+*.tsbuildinfo
+*.log
+.DS_Store
+Thumbs.db
