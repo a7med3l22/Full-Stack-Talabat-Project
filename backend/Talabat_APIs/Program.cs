@@ -25,12 +25,14 @@ namespace Talabat_APIs
                 {
                     opt.AddPolicy("AllowAngular", policy =>
                     {
-                        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(builder.Configuration["AngularLocalHost:AngularVsCode"]!, builder.Configuration["AngularLocalHost:AngularIIS"]!);
+                        policy.AllowAnyHeader()
+                               .AllowAnyMethod()
+                               .WithOrigins(
+                                builder.Configuration["AngularLocalHost:AngularVsCode"]!, 
+                                builder.Configuration["AngularLocalHost:AngularIIS"]!
+                                );
                     });
-				}
-                
-                
-                );
+				});
   
 
             builder.Services.AddControllers().AddNewtonsoftJson(
