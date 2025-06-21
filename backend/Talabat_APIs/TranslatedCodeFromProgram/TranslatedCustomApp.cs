@@ -2,7 +2,7 @@
 using RepositoryLayer.GenericRepository;
 using RepositoryLayer.IdentityRepository;
 using Talabat_APIs.CustomMiddleWares;
-using Talabat_APIs.TranslatedCodeFromProgram.Seeddata;
+using Talabat_APIs.Seeddata;
 
 namespace Talabat_APIs.TranslatedCodeFromProgram
 {

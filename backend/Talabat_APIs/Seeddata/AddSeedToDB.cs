@@ -3,7 +3,7 @@ using CoreLayer.models.ProductModels;
 using RepositoryLayer.GenericRepository;
 using System.Text.Json;
 
-namespace Talabat_APIs.TranslatedCodeFromProgram.Seeddata
+namespace Talabat_APIs.Seeddata
 {
 	public static class AddSeedToDB
 	{
