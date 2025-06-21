@@ -11,7 +11,7 @@ namespace Talabat_APIs.Mapping
 			CreateMap<Product,ProductToReturnDto>()	
 			.ForMember(dest=>dest.ProductBrand, opt=>opt.MapFrom(src=>src.Brand.Name))
 			.ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
-			.ForMember(dest => dest.Category, opt => opt.MapFrom<MappingPictureURL>());
+			.ForMember(dest => dest.PictureUrl, opt => opt.MapFrom<MappingPictureURL>());
 
 		}
 	}
