@@ -22,7 +22,7 @@ namespace Talabat_APIs.Controllers
 			_mapper = mapper;
 			_productService = productService;
 		}
-		[Cache(10)]
+		[Cache(3)]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiErrors))]
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(paginationResponse<ProductToReturnDto>))]
