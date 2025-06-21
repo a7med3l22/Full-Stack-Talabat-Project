@@ -11,13 +11,13 @@ namespace Talabat_APIs
         {
             var builder = WebApplication.CreateBuilder(args);
              //when make publish it will listen on 7039 Https
-			builder.WebHost.ConfigureKestrel(options =>
-			{
-				options.ListenLocalhost(7039, listenOptions =>
-				{
-					listenOptions.UseHttps(); // استخدام شهادة dev-certs
-				});
-			});
+			//builder.WebHost.ConfigureKestrel(options =>
+			//{
+			//	options.ListenLocalhost(7039, listenOptions =>
+			//	{
+			//		listenOptions.UseHttps(); // استخدام شهادة dev-certs
+			//	});
+			//});
 
 			// Add services to the container.
 			builder.Services.AddCors(
