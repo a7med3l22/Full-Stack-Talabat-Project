@@ -66,7 +66,7 @@ namespace Talabat_APIs
 
 
             app.MapControllers();
-            app.UseStaticFiles();
+			app.MapStaticAssets();
 			//app.UseDeveloperExceptionPage(); // قبل app.Run()         // أمسحه لانه بيعرض كل تفاصيل الخطأ في المتصفح    
 
 			app.Run();
