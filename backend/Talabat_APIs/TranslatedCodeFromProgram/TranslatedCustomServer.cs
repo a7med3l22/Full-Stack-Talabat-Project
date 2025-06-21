@@ -8,6 +8,7 @@ using RepositoryLayer.BasketRepository;
 using RepositoryLayer.IdentityRepository;
 using RepositoryLayer.Implmented_Interfaces;
 using RepositoryLayer.UnitOfWork;
+using ServiceLayer;
 using ServiceLayer.Cache_Service;
 using ServiceLayer.Entity_Service;
 using ServiceLayer.Order_Service;
@@ -61,6 +62,7 @@ namespace Talabat_APIs.TranslatedCodeFromProgram
 			server.AddScoped<IProductService,ProductService>();
 			server.AddScoped<IPaymentService, PaymentService>();
 			server.AddScoped<IResponseCacheService, ResponseCacheService>();
+			server.AddScoped<IApiUrl, ApiUrl>(); // For getting the API URL it depend on HTTP Context AND HTTP Context is available in Scoped Lifetime
 			server.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
