@@ -16,10 +16,10 @@ namespace RepositoryLayer.GenericRepository.Data.Seeddata
 		public async static Task AddJsonFilesToDB(ApplicationContext context)
 		{
 			
-			var product = File.ReadAllText("../RepositoryLayer/GenericRepository/Data/Seeddata/Products.json");
-			var category = File.ReadAllText("../RepositoryLayer/GenericRepository/Data/Seeddata/Categories.json");
-			var brand = File.ReadAllText("../RepositoryLayer/GenericRepository/Data/Seeddata/Brands.json");
-			var DeliveryMethodJson = File.ReadAllText("../RepositoryLayer/GenericRepository/Data/Seeddata/DeliveryMethod.json");
+			var product = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Seeddata", "Products.json"));
+			var category = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Seeddata", "Categories.json"));
+			var brand = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Seeddata", "Brands.json"));
+			var DeliveryMethodJson = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Seeddata", "DeliveryMethod.json"));
 
 			if(!context.DeliveryMethods.Any())
 			{
