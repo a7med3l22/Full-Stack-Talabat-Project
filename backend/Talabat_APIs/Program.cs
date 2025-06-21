@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.GenericRepository;
 using RepositoryLayer.IdentityRepository;
 using Talabat_APIs.TranslatedCodeFromProgram;
@@ -10,9 +10,17 @@ namespace Talabat_APIs
         public async static Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+             //when make publish it will listen on 7039 Https
+			builder.WebHost.ConfigureKestrel(options =>
+			{
+				options.ListenLocalhost(7039, listenOptions =>
+				{
+					listenOptions.UseHttps(); // استخدام شهادة dev-certs
+				});
+			});
 
-            // Add services to the container.
-            builder.Services.AddCors(
+			// Add services to the container.
+			builder.Services.AddCors(
                 opt=>
                 {
                     opt.AddPolicy("AllowAngular", policy =>
