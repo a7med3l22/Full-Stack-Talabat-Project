@@ -1,15 +1,9 @@
 ﻿using CoreLayer.models.Order;
 using CoreLayer.models.ProductModels;
-using RepositoryLayer.GenericRepository.Data;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
+using RepositoryLayer.GenericRepository;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace RepositoryLayer.GenericRepository.Data.Seeddata
+namespace Talabat_APIs.TranslatedCodeFromProgram.Seeddata
 {
 	public static class AddSeedToDB
 	{

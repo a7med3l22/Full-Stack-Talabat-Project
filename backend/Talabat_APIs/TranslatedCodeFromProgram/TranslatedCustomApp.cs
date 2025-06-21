@@ -1,9 +1,8 @@
-﻿using Talabat_APIs.CustomMiddleWares;
-using Microsoft.EntityFrameworkCore;
-using RepositoryLayer.GenericRepository.Data;
-using RepositoryLayer.GenericRepository.Data.Seeddata;
+﻿using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.GenericRepository;
 using RepositoryLayer.IdentityRepository;
+using Talabat_APIs.CustomMiddleWares;
+using Talabat_APIs.TranslatedCodeFromProgram.Seeddata;
 
 namespace Talabat_APIs.TranslatedCodeFromProgram
 {

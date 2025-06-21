@@ -1,17 +1,7 @@
-
-using CoreLayer.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
-using RepositoryLayer.GenericRepository.Data.Seeddata;
-using RepositoryLayer.GenericRepository.Data;
-using RepositoryLayer.Implmented_Interfaces;
-using Talabat_APIs.CustomMiddleWares;
-using Talabat_APIs.HandelErrors;
-using Talabat_APIs.Mapping;
-using Talabat_APIs.TranslatedCodeFromProgram;
 using RepositoryLayer.GenericRepository;
 using RepositoryLayer.IdentityRepository;
+using Talabat_APIs.TranslatedCodeFromProgram;
 
 namespace Talabat_APIs
 {
