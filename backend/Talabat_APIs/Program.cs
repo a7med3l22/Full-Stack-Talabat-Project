@@ -60,7 +60,7 @@ namespace Talabat_APIs
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+          //  app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
