@@ -129,6 +129,13 @@ namespace Talabat_APIs.Controllers
 			var AddressDto = _mapper.Map<AddressDto>(user.Address);
 			return Ok(AddressDto);
 		}
+		[HttpGet("emailexists")]
+		public async Task<ActionResult<bool>> CheckEmailExists(string email)
+		{
+			var exists = await _userManager.FindByEmailAsync(email) != null;
+			return exists;
+		}
+
 
 	}
 }
