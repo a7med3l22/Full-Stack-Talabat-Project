@@ -52,7 +52,6 @@ namespace Talabat_APIs
             builder.Services.TranslatedServer(builder.Configuration); // My Own Extension Method
 
 			var app = builder.Build();
-
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();   // يعرض تفاصيل الخطأ فقط في بيئة التطوير
@@ -65,6 +64,8 @@ namespace Talabat_APIs
 			app.UseCors("AllowAngular");
 
 			app.UseAuthorization();
+
+			await app.TranslatedApp();
 
 			app.MapControllers();
 
