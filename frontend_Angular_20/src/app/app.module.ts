@@ -21,13 +21,15 @@ import { BreadcrumbComponent } from "./shared/breadcrumb/breadcrumb";
     AppComponent,BreadcrumbComponent
   ],
   imports: [
+      NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
     HomeModule,
-    NgxSpinnerModule.forRoot() // 👈 مهم جدًا مع بعض الإصدارات
+  NgxSpinnerModule
+
     ,
     
 ],

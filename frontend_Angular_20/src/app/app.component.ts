@@ -4,6 +4,8 @@ import { AccountService } from './account/account.service';
 import { BasketService } from './basket/basket.service';
 import { IPagination } from './shared/models/pagination';
 import { IProduct } from './shared/models/product';
+import { BreadcrumbService } from './core/services/breadcrumb';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({standalone: false,
   selector: 'app-root',
@@ -12,12 +14,20 @@ import { IProduct } from './shared/models/product';
 
 })
 export class AppComponent implements OnInit {
+  showCenteredOutlet: boolean = false;
   title = 'SkiNet';
 
-  constructor(private basketService: BasketService, private accountService: AccountService) { }
+  constructor(private basketService: BasketService, private accountService: AccountService,private breadcrumbService: BreadcrumbService) { 
+
+
+     this.breadcrumbService.hasBreadcrumbs$.subscribe(has => {
+    this.showCenteredOutlet = !has;
+  });
+    
+  }
 
   ngOnInit(): void {
-    this.loadBasket();  ///////////
+    this.loadBasket();  
     this.loadCurrentUser();
   }
 

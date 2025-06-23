@@ -1,18 +1,21 @@
-<!-- Spinner لازم تحدد type -->
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-spin-clockwise"
-  [fullScreen]="true">
-  <p style="color: white">Loading...</p>
+<ngx-spinner>
+    <h3>Loading...</h3>
 </ngx-spinner>
 
 
 <app-nav-bar></app-nav-bar>
-<app-section-header></app-section-header>
 
-<div class="container mt-3">
-  <!-- <app-breadcrumb></app-breadcrumb> -->
+<!-- ✅ لو فيه breadcrumb -->
+<app-section-header *ngIf="!showCenteredOutlet"></app-section-header>
+
+<!-- ✅ لو الصفحة مفيهاش breadcrumb (زي Login) -->
+<div *ngIf="showCenteredOutlet" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- ✅ لو فيه breadcrumb -->
+<div *ngIf="!showCenteredOutlet" class="container mt-5">
   <router-outlet></router-outlet>
 </div>

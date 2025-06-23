@@ -1,37 +1,41 @@
 <div class="container mt-2">
   <ng-container *ngIf="basket$ | async as basket; else emptyBasket">
-    <div class="pb-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 py-5 mb-1">
-            <app-basket-summary
-              (decrement)="decrementItemQuantity($event)"
-              (increment)="incrementItemQuantity($event)"
-              (remove)="removeBasketItem($event)"
-              [items]="basket.items"
-            ></app-basket-summary>
+    <ng-container *ngIf="basket.items.length > 0; else emptyBasket">
+      <!-- ✅ سلة الشراء فيها عناصر -->
+      <div class="pb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 py-5 mb-1">
+              <app-basket-summary
+                (decrement)="decrementItemQuantity($event)"
+                (increment)="incrementItemQuantity($event)"
+                (remove)="removeBasketItem($event)"
+                [items]="basket.items"
+              ></app-basket-summary>
+            </div>
           </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-6 offset-6">
-            <ng-container *ngIf="basketTotals$ | async as basketTotals">
-              <app-order-totals
-                [shippingPrice]="basketTotals.shipping"
-                [subtotal]="basketTotals.subtotal"
-                [total]="basketTotals.total"
-              ></app-order-totals>
-            </ng-container>
 
-            <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block">
-              Proceed to checkout
-            </a>
+          <div class="row">
+            <div class="col-6 offset-6">
+              <ng-container *ngIf="basketTotals$ | async as basketTotals">
+                <app-order-totals
+                  [shippingPrice]="basketTotals.shipping"
+                  [subtotal]="basketTotals.subtotal"
+                  [total]="basketTotals.total"
+                ></app-order-totals>
+              </ng-container>
+
+              <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block">
+                Proceed to checkout
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 
+  <!-- ✅ دي هتظهر لما basket تكون null أو عدد العناصر = 0 -->
   <ng-template #emptyBasket>
     <p>There are no items in your basket</p>
   </ng-template>

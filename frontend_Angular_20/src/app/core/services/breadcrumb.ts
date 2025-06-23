@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 export interface Breadcrumb {
   label: string;
@@ -14,6 +14,11 @@ export interface Breadcrumb {
 export class BreadcrumbService {
   private breadcrumbsSubject = new BehaviorSubject<Breadcrumb[]>([]);
   breadcrumbs$: Observable<Breadcrumb[]> = this.breadcrumbsSubject.asObservable();
+
+  // ✅ أضف دي هنا
+  hasBreadcrumbs$: Observable<boolean> = this.breadcrumbs$.pipe(
+    map(breadcrumbs => breadcrumbs.length > 1) // لأن أول عنصر دايمًا "Home"
+  );
 
   private breadcrumbs: Breadcrumb[] = [];
 
@@ -33,6 +38,7 @@ export class BreadcrumbService {
       this.breadcrumbs = filteredBreadcrumbs;
       this.breadcrumbsSubject.next(this.breadcrumbs);
     });
+    
   }
 
   private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {
@@ -98,4 +104,5 @@ export class BreadcrumbService {
       this.breadcrumbsSubject.next([...this.breadcrumbs]);
     }
   }
+  
 }
