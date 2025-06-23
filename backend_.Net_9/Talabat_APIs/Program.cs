@@ -52,26 +52,26 @@ namespace Talabat_APIs
             builder.Services.TranslatedServer(builder.Configuration); // My Own Extension Method
 
 			var app = builder.Build();
-            app.UseCors("AllowAngular");
 
-            await app.TranslatedApp(); // My Own Extension Method
-			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+			{
+				app.UseDeveloperExceptionPage();   // يعرض تفاصيل الخطأ فقط في بيئة التطوير
+				app.UseSwagger();
+				app.UseSwaggerUI();
+			}
 
-          //  app.UseHttpsRedirection();
+			app.UseRouting();           // مهم جدًا: يجب استدعاؤه قبل UseCors و UseAuthorization
 
-            app.UseAuthorization();
+			app.UseCors("AllowAngular");
 
+			app.UseAuthorization();
 
-            app.MapControllers();
+			app.MapControllers();
+
 			app.MapStaticAssets();
-			//app.UseDeveloperExceptionPage(); // قبل app.Run()         // أمسحه لانه بيعرض كل تفاصيل الخطأ في المتصفح    
 
 			app.Run();
-        }
-    }
+
+		}
+	}
 }
