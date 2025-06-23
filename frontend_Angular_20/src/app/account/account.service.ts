@@ -12,10 +12,17 @@ import { IUser } from '../shared/models/user';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
-  private currentUserSource = new ReplaySubject<IUser | null>(1);
-  currentUser$ = this.currentUserSource.asObservable();
+private currentUserSource = new ReplaySubject<IUser | null>(1);
+public currentUser$ = this.currentUserSource.asObservable();
+
 
   constructor(private http: HttpClient, private router: Router) { }
+
+// داخل AccountService
+clearCurrentUser() {
+  this.currentUserSource.next(null);
+}
+
 
   loadCurrentUser(token: string | null): Observable<IUser | null> {
     if (!token) {

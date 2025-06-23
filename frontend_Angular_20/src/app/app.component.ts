@@ -31,11 +31,12 @@ export class AppComponent implements OnInit {
     this.loadCurrentUser();
   }
 
-  loadCurrentUser() {
+loadCurrentUser() {
   const token = localStorage.getItem('token');
   if (!token) {
     console.warn('No token found in localStorage');
-    return; // أو تعالج الحالة المناسبة
+    this.accountService.clearCurrentUser(); // ✅ استخدم الميثود الجديدة
+    return;
   }
 
   this.accountService.loadCurrentUser(token).subscribe({
@@ -44,9 +45,12 @@ export class AppComponent implements OnInit {
     },
     error: (error: any) => {
       console.log(error);
+      this.accountService.clearCurrentUser(); // ✅ حتى لو حصل error
     }
   });
 }
+
+
 
 
   loadBasket() {
