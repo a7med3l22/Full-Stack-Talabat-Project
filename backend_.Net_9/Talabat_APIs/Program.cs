@@ -65,7 +65,7 @@ namespace Talabat_APIs
 
 			app.UseAuthorization();
 
-			await app.TranslatedApp();
+			await app.TranslatedApp();// My Own Extension Method
 
 			app.MapControllers();
 

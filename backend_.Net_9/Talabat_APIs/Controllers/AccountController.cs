@@ -87,7 +87,7 @@ namespace Talabat_APIs.Controllers
 			//var user=await _userManager.FindByIdAsync(userId);
 			/////These 3 Line Equal next Line
 			var user=await _userManager.GetUserAsync(User);
-			if (user == null) return Unauthorized(new ApiErrors(401));
+			if (user == null) return Unauthorized(new ApiErrors(401, "Your User Is Not Found,Please Register And Login With New User!"));
 			var userDto = new UserDto
 			{
 				DisplayName = user.DisplayName,

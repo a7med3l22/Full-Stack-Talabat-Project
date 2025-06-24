@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of, ReplaySubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { IAddress } from '../shared/models/address';
 import { IUser } from '../shared/models/user';
@@ -40,10 +40,17 @@ clearCurrentUser() {
           this.currentUserSource.next(user);
           return user;
         } else {
+          localStorage.removeItem('token');
           this.currentUserSource.next(null);
           return null;
         }
-      })
+      }),
+  catchError(error => {
+    // في حالة أي خطأ (زي 401 أو 500) نمسح التوكن بردو
+    localStorage.removeItem('token');
+    this.currentUserSource.next(null);
+    return of(null);
+  })
     );
   }
 
