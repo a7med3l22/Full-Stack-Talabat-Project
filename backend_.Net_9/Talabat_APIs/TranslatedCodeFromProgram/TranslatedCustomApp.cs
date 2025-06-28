@@ -10,6 +10,16 @@ namespace Talabat_APIs.TranslatedCodeFromProgram
 	{
 		public static async Task<WebApplication> TranslatedApp(this WebApplication app)
 		{
+			/*
+					    ✅ تستخدم CreateScope() فقط إذا أردت:
+			 
+						استخدام خدمة Scoped داخل Program.cs.
+
+						أو داخل Background Service خارج HTTP Request.
+
+						✅ ولا تستخدم CreateScope() إطلاقًا مع Singleton أو Transient.
+			 
+			 */
 
 			//auto update DataBase
 			using (var scope = app.Services.CreateScope())
